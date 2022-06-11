@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/posts/novo', [\App\Http\Controllers\PostsController::class, 'create']);
+Route::post('/posts/novo', [\App\Http\Controllers\PostsController::class, 'store'])->name("registrar.post");

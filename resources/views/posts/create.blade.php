@@ -15,38 +15,27 @@
         </style>
     </head>
     <body>
-        <section x-data="main">
+        <section x-data="posts">
             <x-nav></x-nav>
 
             <section class="mx-32 mt-10">
-                <div class="flex justify-between items-center w-full font-bold text-black-24">
-                    <template x-for="items in categorias">
-                        <p x-text="items"></p>
-                    </template>
-                </div>
 
-                <div class="lg:container lg:grid lg:grid-cols-3 sm:grid-cols-1 w-full mt-10">
-                    <p class="col-span-2">a</p>
-                    <p class="col-span-1">b</p>
-                </div>
+                <form action="{{ route('registrar.post') }}" method="POST">
+                    @csrf
+                    <input type="text" name="titulo" class="border border-black">
+                    <input type="text" name="imagem" class="border border-black">
+                    <input type="text" name="conteudo" class="border border-black">
+                    <input type="text" name="autor" class="border border-black">
+                    <input type="text" name="categoria" class="border border-black">
+                    <button type="submit">Salvar</button>
+                </form>
             </section>
         </section>
 
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
             document.addEventListener('alpine:init', () => {
-                Alpine.data('main', () => ({
-                    categorias: [
-                        'Tech',
-                        'Elon',
-                        'Musk',
-                        'React',
-                        'Flutter',
-                        'Laravel',
-                        'JavaScript',
-                        'Front-end',
-                        'Back-end'
-                    ],
+                Alpine.data('posts', () => ({
         
                     init() {
                         
