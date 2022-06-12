@@ -30,14 +30,19 @@
                     <p class="col-span-1">b</p>
                 </div>
 
-                <form action=""></form>
+                <template x-for="post in data">
+                    <section></section>
+                </template>
             </section>
         </section>
 
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
             document.addEventListener('alpine:init', () => {
                 Alpine.data('main', () => ({
+                    data: [],
+                    api: axios.create(),
                     categorias: [
                         'Tech',
                         'Elon',
@@ -51,8 +56,14 @@
                     ],
         
                     init() {
-                        
+                        this.get();
                     },
+
+                    get() {
+                        api.get('{{route('api.posts', false)}}').then((response) => {
+                            this.data = reponse.data;
+                        });
+                    }
                 }))
             })
         </script>
