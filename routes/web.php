@@ -24,3 +24,13 @@ Route::get('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'e
 Route::post('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'update'])->name("update.post");
 Route::get('/posts/{id}/delete', [\App\Http\Controllers\PostsController::class, 'delete']);
 Route::post('/posts/{id}/destroy', [\App\Http\Controllers\PostsController::class, 'destroy'])->name("destroy.post");
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('home');
+    })->name('dashboard');
+});

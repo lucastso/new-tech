@@ -1,22 +1,20 @@
-const { colors } = require("laravel-mix/src/Log");
+const defaultTheme = require('tailwindcss/defaultTheme');
 
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-    mode: "jit",
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/laravel/jetstream/**/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
     ],
+
     theme: {
         extend: {
-            colors: {
-                black: {
-                    ...colors.black,
-                    24: "#242424",
-                },
+            fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
     },
-    plugins: [],
+
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
