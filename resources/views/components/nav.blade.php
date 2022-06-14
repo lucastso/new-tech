@@ -7,7 +7,7 @@
         </form>
     </div>
     <div class="flex justify-center items-center gap-12 mr-32 font-bold text-black-24">
-        <p>Registrar-se</p>
-        <p class="py-2 px-4 border-2 border-black-24 rounded">Login</p>
+        <a href="/register">Registrar-se</a>
+        <a href="/login" class="py-2 px-4 border-2 border-black-24 rounded">Login</a>
     </div>
 </section>
