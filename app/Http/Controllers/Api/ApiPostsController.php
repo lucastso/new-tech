@@ -10,8 +10,8 @@ class ApiPostsController extends Controller
 {
     public function index(Request $request)
     {   
-        $data = Posts::all()->limit(12)->get()->toArray();
+        $data = Posts::all();
 
-        return $response->json($data);
+        return response()->json($data);
     }
 }

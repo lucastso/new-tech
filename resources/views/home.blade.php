@@ -18,16 +18,36 @@
         <section x-data="main">
             <x-nav></x-nav>
 
-            <section class="mx-32 mt-10">
-                <div class="flex justify-between items-center w-full font-bold text-black-24">
+            <section class="w-full sm:mx-6 lg:mx-32 mt-10">
+                <div class="flex justify-between items-center w-full font-bold text-black-24 flex-wrap text-center">
                     <template x-for="items in categorias">
-                        <p x-text="items"></p>
+                        <p x-text="items" class="cursor-pointer"></p>
                     </template>
                 </div>
 
-                <div class="lg:container lg:grid lg:grid-cols-3 sm:grid-cols-1 w-full mt-10">
-                    <p class="col-span-2">a</p>
-                    <p class="col-span-1">b</p>
+                <div class="lg:container lg:grid lg:grid-cols-3 sm:grid-cols-1 w-full mt-10 gap-10">
+                    <section class="flex items-center justify-between col-span-2 bg-red-100">
+                        <img x-bind:src="data[0].imagem" alt="Post image" class="w-80">    
+                        <div class="flex flex-col gap-4">
+                            <h1 x-text="data[0].titulo"></h1>
+                            <p x-text="data[0].conteudo"></p>
+                            <div class="flex gap-2">
+                                <p x-text="data[0].autor"></p>
+                                <p x-text="data[0].categoria"></p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="flex items-center justify-between col-span-1 bg-red-100">
+                        <img x-bind:src="data[0].imagem" alt="Post image" class="w-80">    
+                        <div class="flex flex-col gap-4">
+                            <h1 x-text="data[0].titulo"></h1>
+                            <p x-text="data[0].conteudo"></p>
+                            <div class="flex gap-2">
+                                <p x-text="data[0].autor"></p>
+                                <p x-text="data[0].categoria"></p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
                 <template x-for="post in data">
@@ -60,8 +80,8 @@
                     },
 
                     get() {
-                        api.get('{{route('api.posts', false)}}').then((response) => {
-                            this.data = reponse.data;
+                        this.api.get('{{route('api.posts', false)}}').then((response) => {
+                            this.data = response.data;
                         });
                     }
                 }))

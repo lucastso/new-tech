@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api/posts', [\App\Http\Controllers\Api\PostsController::class, 'index'])->name("api.posts");
+Route::get('/posts', [\App\Http\Controllers\Api\ApiPostsController::class, 'index'])->name("api.posts");
