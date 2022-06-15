@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Nav extends Component
 {
@@ -11,9 +12,15 @@ class Nav extends Component
      *
      * @return void
      */
+    public $log;
+    public $user;
     public function __construct()
     {
-        //
+        $this->log = false;
+        if (Auth::check()) {
+            $this->log = true;
+            $this->user = Auth::user();
+        }
     }
 
     /**

@@ -39,15 +39,20 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $post = Posts::findOrFail($id);
+        $user = $request->user();
 
-        $post->update([
-            'titulo' => $request->titulo,
-            'imagem' => $request->imagem,
-            'conteudo' => $request->conteudo,
-            'autor' => $request->autor,
-            'categoria' => $request->categoria
-        ]);
-        return "post atualizado com sucesso!";
+        if($user->can('update', $post)){
+            $post->update([
+                'titulo' => $request->titulo,
+                'imagem' => $request->imagem,
+                'conteudo' => $request->conteudo,
+                'autor' => $request->autor,
+                'categoria' => $request->categoria
+            ]);
+            return "post atualizado com sucesso!";
+        }
+        
+        return "vc n pode atualizar esse post, ele n é seu";
     }
 
     public function delete($id)

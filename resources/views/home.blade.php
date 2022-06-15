@@ -25,33 +25,43 @@
                     </template>
                 </div>
 
-                <div class="lg:container lg:grid lg:grid-cols-3 sm:grid-cols-1 w-full mt-10 gap-10">
-                    <section class="flex items-center justify-between col-span-2 bg-red-100">
-                        <img x-bind:src="data[0].imagem" alt="Post image" class="w-80">    
+                <div class="w-full mt-10 gap-10 flex items-center">
+                    <section class="flex items-center justify-between bg-red-100">
+                        <img x-bind:src="data[0]?.imagem" alt="Post image" class="w-80">    
                         <div class="flex flex-col gap-4">
-                            <h1 x-text="data[0].titulo"></h1>
-                            <p x-text="data[0].conteudo"></p>
+                            <h1 x-text="data[0]?.titulo"></h1>
+                            <p x-text="data[0]?.conteudo"></p>
                             <div class="flex gap-2">
-                                <p x-text="data[0].autor"></p>
-                                <p x-text="data[0].categoria"></p>
+                                <p x-text="data[0]?.autor"></p>
+                                <p x-text="data[0]?.categoria"></p>
                             </div>
                         </div>
                     </section>
-                    <section class="flex items-center justify-between col-span-1 bg-red-100">
-                        <img x-bind:src="data[0].imagem" alt="Post image" class="w-80">    
+                    <section class="flex items-center justify-between bg-red-100">
+                        <img x-bind:src="data[1]?.imagem" alt="Post image" class="w-80">    
                         <div class="flex flex-col gap-4">
-                            <h1 x-text="data[0].titulo"></h1>
-                            <p x-text="data[0].conteudo"></p>
+                            <h1 x-text="data[1]?.titulo"></h1>
+                            <p x-text="data[1]?.conteudo"></p>
                             <div class="flex gap-2">
-                                <p x-text="data[0].autor"></p>
-                                <p x-text="data[0].categoria"></p>
+                                <p x-text="data[1]?.autor"></p>
+                                <p x-text="data[1]?.categoria"></p>
                             </div>
                         </div>
                     </section>
                 </div>
 
-                <template x-for="post in data">
-                    <section></section>
+                <template x-for="post in data.slice(0, 3)">
+                <section class="flex items-center justify-between bg-red-100">
+                        <img x-bind:src="post.imagem" alt="Post image" class="w-80">    
+                        <div class="flex flex-col gap-4">
+                            <h1 x-text="post.titulo"></h1>
+                            <p x-text="post.conteudo"></p>
+                            <div class="flex gap-2">
+                                <p x-text="post.autor"></p>
+                                <p x-text="post.categoria"></p>
+                            </div>
+                        </div>
+                    </section>
                 </template>
             </section>
         </section>
@@ -68,11 +78,6 @@
                         'Elon',
                         'Musk',
                         'React',
-                        'Flutter',
-                        'Laravel',
-                        'JavaScript',
-                        'Front-end',
-                        'Back-end'
                     ],
         
                     init() {
