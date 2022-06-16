@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -18,10 +19,10 @@ class PostsController extends Controller
             'titulo' => $request->titulo,
             'imagem' => $request->imagem,
             'conteudo' => $request->conteudo,
-            'autor' => $request->autor,
+            'autor' => Auth::user()->name,
             'categoria' => $request->categoria
         ]);
-        return "post criado com sucesso!";
+        return view('home');
     }
 
     public function show($id)

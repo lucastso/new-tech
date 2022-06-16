@@ -6,6 +6,6 @@
         <input type="text" name="imagem" class="border border-black">
         <input type="text" name="conteudo" class="border border-black">
         <input type="text" name="categoria" class="border border-black">
-        <button type="submit">Salvar</button>
+        <button type="submit">Criar</button>
     </form>
 @endsection
