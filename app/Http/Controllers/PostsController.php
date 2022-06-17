@@ -13,6 +13,16 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
+    public function getUserPosts()
+    {
+        $data = Posts::query()
+            ->select('*')
+            ->where('autor', Auth::user()->id)
+            ->get()->toArray();
+
+        return view('posts.userpost', ['data' => $data]);
+    }
+
     public function store(Request $request)
     {
         Posts::create([

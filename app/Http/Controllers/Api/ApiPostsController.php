@@ -10,8 +10,23 @@ class ApiPostsController extends Controller
 {
     public function index(Request $request)
     {   
-        $data = Posts::all();
+        $data = Posts::query()
+            ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name')
+            ->join('users', 'posts.autor', '=', 'users.id')
+            ->get()->toArray();
 
         return response()->json($data);
     }
+
+    public function search(Request $request)
+    {
+        $texto = $request->query('texto');
+        $search = Posts::query()
+            ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name')
+            ->join('users', 'posts.autor', '=', 'users.id')
+            ->where('posts.titulo', 'like', '%' . $texto . '%')
+            ->get()->toArray();
+
+        return response()->json($search);
+    } 
 }

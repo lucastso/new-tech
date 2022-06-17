@@ -1,49 +1,29 @@
 @extends('layouts.interna')
 @section('content')
+<section x-data="main()">
     <div class="flex justify-between items-center w-full font-bold text-black-24 flex-wrap text-center">
         <template x-for="items in categorias">
             <p x-text="items" class="cursor-pointer"></p>
         </template>
     </div>
 
-    <div class="w-full mt-10 gap-10 flex items-center">
-        <section class="flex items-center justify-between bg-red-100">
-            <img x-bind:src="data[0]?.imagem" alt="Post image" class="w-80">    
-            <div class="flex flex-col gap-4">
-                <h1 x-text="data[0]?.titulo"></h1>
-                <p x-text="data[0]?.conteudo"></p>
-                <div class="flex gap-2">
-                    <p x-text="data[0]?.autor"></p>
-                    <p x-text="data[0]?.categoria"></p>
+    <div class="grid grid-cols-3 gap-12 mt-10">
+        <template x-for="post in data">
+            <section class="flex items-start justify-between col-span-1 h-40 gap-3">
+                <img x-bind:src="post.imagem" alt="Post image" class="w-56 h-40 object-cover rounded-lg">    
+                <div class="flex flex-col gap-4 mt-1">
+                    <h1 x-text="sliceTexto(post.titulo)" class="font-bold"></h1>
+                    <p x-text="sliceTexto(post.conteudo)" class="text-sm"></p>
+                    <div class="flex gap-2 text-sm items-center font-bold">
+                        <p x-text="post.name"></p>
+                        <p class="py-1 px-2 border-2 border-black-24 rounded" x-text="post.categoria"></p>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="flex items-center justify-between bg-red-100">
-            <img x-bind:src="data[1]?.imagem" alt="Post image" class="w-80">    
-            <div class="flex flex-col gap-4">
-                <h1 x-text="data[1]?.titulo"></h1>
-                <p x-text="data[1]?.conteudo"></p>
-                <div class="flex gap-2">
-                    <p x-text="data[1]?.autor"></p>
-                    <p x-text="data[1]?.categoria"></p>
-                </div>
-            </div>
-        </section>
+            </section>
+        </template>
     </div>
 
-    <template x-for="post in data.slice(0, 3)">
-    <section class="flex items-center justify-between bg-red-100">
-            <img x-bind:src="post.imagem" alt="Post image" class="w-80">    
-            <div class="flex flex-col gap-4">
-                <h1 x-text="post.titulo"></h1>
-                <p x-text="post.conteudo"></p>
-                <div class="flex gap-2">
-                    <p x-text="post.autor"></p>
-                    <p x-text="post.categoria"></p>
-                </div>
-            </div>
-        </section>
-    </template>
+</section>
 @endsection
 @section('scripts')
     <script>
@@ -60,11 +40,30 @@
     
                 init() {
                     this.get();
+                    this.getText();
                 },
 
                 get() {
                     this.api.get('{{route('api.posts', false)}}').then((response) => {
                         this.data = response.data;
+                    });
+                },
+
+                sliceTexto(item) {
+                    return item.slice(0, 60) + '...';
+                },
+
+                getText() {
+                    let el = document.getElementById("texto");
+                    let self = this;
+                    el.addEventListener("keydown", function(event) {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            self.api.get('{{route('api.search', false)}}?texto=' + el.value)
+                            .then((response) => {
+                                self.data = response.data;
+                            });
+                        }
                     });
                 }
             }))
