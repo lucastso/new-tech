@@ -37,7 +37,11 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Posts::findOrFail($id);
+        $post = Posts::query()
+        ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name', 'users.profile_photo_path', 'posts.created_at')
+        ->join('users', 'posts.autor', '=', 'users.id')
+        ->where('posts.id', $id)
+        ->get()->toArray();
         return view('posts.show', ['post' => $post]);
     }
 

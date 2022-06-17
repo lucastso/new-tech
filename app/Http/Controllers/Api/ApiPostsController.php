@@ -11,7 +11,7 @@ class ApiPostsController extends Controller
     public function index(Request $request)
     {   
         $data = Posts::query()
-            ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name')
+            ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name', 'users.profile_photo_path')
             ->join('users', 'posts.autor', '=', 'users.id')
             ->get()->toArray();
 

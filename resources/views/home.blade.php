@@ -8,18 +8,18 @@
     </div>
 
     <div class="grid grid-cols-3 gap-12 mt-10">
-        <template x-for="post in data">
-            <section class="flex items-start justify-between col-span-1 h-40 gap-3">
-                <img x-bind:src="post.imagem" alt="Post image" class="w-56 h-40 object-cover rounded-lg">    
+        <template x-for="item in data">
+            <a class="flex items-start justify-between col-span-1 h-40 gap-3 cursor-pointer" x-bind:href="'/posts/' + item.id" id="item.id">
+                <img x-bind:src="item.imagem" alt="Post image" class="w-56 h-40 object-cover rounded-lg">    
                 <div class="flex flex-col gap-4 mt-1">
-                    <h1 x-text="sliceTexto(post.titulo)" class="font-bold"></h1>
-                    <p x-text="sliceTexto(post.conteudo)" class="text-sm"></p>
+                    <h1 x-text="sliceTexto(item.titulo)" class="font-bold"></h1>
+                    <p x-text="sliceTexto(item.conteudo)" class="text-sm text-gray-600"></p>
                     <div class="flex gap-2 text-sm items-center font-bold">
-                        <p x-text="post.name"></p>
-                        <p class="py-1 px-2 border-2 border-black-24 rounded" x-text="post.categoria"></p>
+                        <p x-text="item.name"></p>
+                        <p class="py-1 px-2 border-2 border-black-24 rounded" x-text="item.categoria"></p>
                     </div>
                 </div>
-            </section>
+            </a>
         </template>
     </div>
 
