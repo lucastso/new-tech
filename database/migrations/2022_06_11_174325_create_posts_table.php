@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->string('imagem');
-            $table->string('conteudo');
-            $table->string('autor');
-            $table->string('categoria');
+            $table->string('titulo', 2048);
+            $table->string('imagem', 2048);
+            $table->string('conteudo', 2048);
+            $table->string('autor', 24);
+            $table->string('categoria', 24);
             $table->timestamps();
         });
     }

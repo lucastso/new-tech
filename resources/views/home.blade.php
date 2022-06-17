@@ -7,7 +7,7 @@
         </template>
     </div>
 
-    <div class="grid grid-cols-3 gap-12 mt-10">
+    <div class="grid grid-cols-3 gap-12 mt-10" x-show="data.length != 0">
         <template x-for="item in data">
             <a class="flex items-start justify-between col-span-1 h-40 gap-3 cursor-pointer" x-bind:href="'/posts/' + item.id" id="item.id">
                 <img x-bind:src="item.imagem" alt="Post image" class="w-56 h-40 object-cover rounded-lg">    
@@ -22,6 +22,8 @@
             </a>
         </template>
     </div>
+
+    <p x-show="data.length == 0" class="font-bold text-center w-full">Nenhum post disponível! :(</p>
 
 </section>
 @endsection
