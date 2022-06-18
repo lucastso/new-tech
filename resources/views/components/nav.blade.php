@@ -51,7 +51,6 @@
             @else
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
                 <a href="/">Usuários</a>
-                <a href="/">Posts</a>
             </div>
             @endif
         </section>
