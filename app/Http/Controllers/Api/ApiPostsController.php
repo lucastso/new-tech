@@ -13,6 +13,7 @@ class ApiPostsController extends Controller
         $data = Posts::query()
             ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name', 'users.profile_photo_path')
             ->join('users', 'posts.autor', '=', 'users.id')
+            ->where('posts.estado', 2)
             ->get()->toArray();
 
         return response()->json($data);
@@ -25,8 +26,20 @@ class ApiPostsController extends Controller
             ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name')
             ->join('users', 'posts.autor', '=', 'users.id')
             ->where('posts.titulo', 'like', '%' . $texto . '%')
+            ->where('posts.estado', 2)
             ->get()->toArray();
 
         return response()->json($search);
-    } 
+    }
+
+    public function avaliar(Request $request)
+    {   
+        $data = Posts::query()
+            ->select('posts.id', 'posts.titulo', 'posts.imagem', 'posts.conteudo', 'posts.autor', 'posts.categoria', 'users.name', 'users.profile_photo_path')
+            ->join('users', 'posts.autor', '=', 'users.id')
+            ->where('posts.estado', 1)
+            ->get()->toArray();
+
+        return response()->json($data);
+    }
 }
