@@ -34,3 +34,7 @@ Route::middleware([
     Route::get('/posts/{id}/delete', [\App\Http\Controllers\PostsController::class, 'delete']);
     Route::post('/posts/destroy', [\App\Http\Controllers\PostsController::class, 'destroy'])->name("destroy.post");
 });
+
+Route::prefix('avaliador')->middleware(['auth', 'level'])->group(function () {
+    Route::get('/avaliar', [\App\Http\Controllers\PostsController::class, 'avaliar']);
+});

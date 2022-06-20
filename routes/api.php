@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/posts', [\App\Http\Controllers\Api\ApiPostsController::class, 'index'])->name("api.posts");
 Route::get('/posts/avaliar', [\App\Http\Controllers\Api\ApiPostsController::class, 'avaliar'])->name("api.posts.avaliar");
 Route::get('/posts/search', [\App\Http\Controllers\Api\ApiPostsController::class, 'search'])->name("api.search");
+Route::get('/posts/avaliado', [\App\Http\Controllers\Api\ApiPostsController::class, 'avaliado'])->name("api.posts.avaliado");

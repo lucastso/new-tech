@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('imagem', 2048);
             $table->string('conteudo', 2048);
             $table->string('autor', 24);
-            $table->integer('estado')->default(0);
+            $table->integer('estado')->default(1);
             $table->string('categoria', 24);
             $table->timestamps();
         });

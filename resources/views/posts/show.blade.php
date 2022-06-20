@@ -19,6 +19,12 @@
                 <h1 x-text="data[0].titulo" class="font-bold text-lg"></h1>
                 <span class="text-sm text-gray-600">-</span>
                 <p x-text="getDate(data[0].created_at)" class="text-sm text-gray-600"></p>
+                @if($user->level == 1)
+                <div class="flex items-center justify-center gap-2 ml-4">
+                    <p class="px-1 border-2 border-green-500 rounded bg-green-200 text-green-500 font-bold cursor-pointer text-xs">aceitar</p>
+                    <p class="px-1 border-2 border-red-500 rounded bg-red-200 text-red-500 font-bold cursor-pointer text-xs">recusar</p>
+                </div>
+                @endif
             </div>
             <div class="flex items-center font-bold gap-4">
                 <p x-text="data[0].name"></p>

@@ -79,4 +79,9 @@ class PostsController extends Controller
         $post = Posts::findOrFail($id);
         $post->delete();
     }
+
+    public function avaliar()
+    {
+        return view('posts.avaliar');
+    }
 }

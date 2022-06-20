@@ -4,11 +4,15 @@
             <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
-                </a>    
+                </a>  
+                @if($user->level == 0)
                 <form class="relative">
                     <input type="text" class="bg-white border border-gray-400 rounded-md w-96 h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
                     <img src="/lupa.png" alt="search" class="absolute top-3 right-3">
                 </form>
+                @else
+                <p id="texto"></p>
+                @endif
             </div>
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
                 <a href="/register">Registrar-se</a>
@@ -20,11 +24,15 @@
             <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
-                </a>    
+                </a>
+                @if($user->level == 0) 
                 <form class="relative">
                     <input type="text" class="bg-white border border-gray-400 rounded-md w-96 h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
                     <img src="/lupa.png" alt="search" class="absolute top-3 right-3">
                 </form>
+                @else
+                <p id="texto"></p>
+                @endif
             </div>
             @if($user->level == 0)
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
@@ -50,7 +58,7 @@
             </div>
             @elseif($user->level == 1)
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
-                <a href="/" class="py-2 px-4 border-2 border-black-24 rounded">Avaliar posts</a>
+                <a href="/avaliador/avaliar" class="py-2 px-4 border-2 border-black-24 rounded">Avaliar posts</a>
             </div>
             @else
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
