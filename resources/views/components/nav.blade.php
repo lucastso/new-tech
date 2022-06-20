@@ -1,6 +1,6 @@
 <div x-data="nav()">
     @if($log == false)
-        <section class="h-20 flex sm:flex-col-reverse lg:flex-row justify-between items-center border-b border-gray-100">
+        <section class="h-20 flex xs:flex-col-reverse lg:flex-row justify-between items-center border-b border-gray-100">
             <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
@@ -16,7 +16,7 @@
             </div>
         </section>
     @else
-        <section class="h-20 flex sm:flex-col-reverse lg:flex-row justify-between items-center border-b border-gray-100">
+        <section class="h-20 flex xs:flex-col-reverse lg:flex-row justify-between items-center border-b border-gray-100">
             <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
@@ -32,7 +32,11 @@
                 <a href="/posts/novo" class="py-2 px-4 border-2 border-black-24 rounded">Novo post +</a>
                 <a x-on:click="showLogOut = !showLogOut " class="flex gap-4 items-center text-black-24 relative">
                     <p>{{$user->name}}</p>
-                    <img src="{{$user->profile_photo_path}}" alt="" class="rounded-full h-10 w-10">
+                    @if($user->profile_photo_path != null)
+                        <img src="{{$user->profile_photo_path}}" alt="" class="rounded-full h-10 w-10 object-cover">
+                    @else
+                        <img src="/user.png" alt="" class="rounded-full h-10 w-10 object-cover">
+                    @endif
                     <form method="POST" action="{{ route('logout') }}" class="border rounded border-black-24 absolute mt-24 px-4 py-2 bg-white right-24" x-show="showLogOut == true">
                         @csrf
                         <div class="nav-item">

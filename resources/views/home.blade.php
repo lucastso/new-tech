@@ -23,7 +23,7 @@
         </template>
     </div>
 
-    <p x-show="data.length == 0" class="font-bold text-center w-full">Nenhum post disponível! :(</p>
+    <p x-show="data.length == 0" class="font-bold text-center w-full mt-10">Nenhum post disponível! :(</p>
 
 </section>
 @endsection

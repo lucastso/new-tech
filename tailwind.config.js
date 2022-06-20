@@ -17,6 +17,10 @@ module.exports = {
                 "black-24": "#242424",
             },
         },
+        screens: {
+            xs: "360px",
+            ...defaultTheme.screens,
+        },
     },
 
     plugins: [

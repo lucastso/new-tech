@@ -17,15 +17,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/posts/novo', [\App\Http\Controllers\PostsController::class, 'create']);
-Route::get('/posts/myposts', [\App\Http\Controllers\PostsController::class, 'getUserPosts']);
-Route::post('/posts/novo', [\App\Http\Controllers\PostsController::class, 'store'])->name("registrar.post");
-Route::get('/posts/{id}', [\App\Http\Controllers\PostsController::class, 'show']);
-Route::get('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'edit']);
-Route::post('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'update'])->name("update.post");
-Route::get('/posts/{id}/delete', [\App\Http\Controllers\PostsController::class, 'delete']);
-Route::post('/posts/{id}/destroy', [\App\Http\Controllers\PostsController::class, 'destroy'])->name("destroy.post");
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -34,4 +25,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('home');
     })->name('dashboard');
+    Route::get('/posts/novo', [\App\Http\Controllers\PostsController::class, 'create']);
+    Route::get('/posts/myposts', [\App\Http\Controllers\PostsController::class, 'getUserPosts']);
+    Route::post('/posts/novo', [\App\Http\Controllers\PostsController::class, 'store'])->name("registrar.post");
+    Route::get('/posts/{id}', [\App\Http\Controllers\PostsController::class, 'show']);
+    Route::get('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'edit']);
+    Route::post('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'update'])->name("update.post");
+    Route::get('/posts/{id}/delete', [\App\Http\Controllers\PostsController::class, 'delete']);
+    Route::post('/posts/destroy', [\App\Http\Controllers\PostsController::class, 'destroy'])->name("destroy.post");
 });

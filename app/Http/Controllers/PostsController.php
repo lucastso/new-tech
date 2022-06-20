@@ -29,7 +29,7 @@ class PostsController extends Controller
             'titulo' => $request->titulo,
             'imagem' => $request->imagem,
             'conteudo' => $request->conteudo,
-            'autor' => Auth::user()->name,
+            'autor' => Auth::user()->id,
             'categoria' => $request->categoria
         ]);
         return view('home');
@@ -42,7 +42,10 @@ class PostsController extends Controller
         ->join('users', 'posts.autor', '=', 'users.id')
         ->where('posts.id', $id)
         ->get()->toArray();
-        return view('posts.show', ['post' => $post]);
+
+        $user = Auth::user();
+
+        return view('posts.show', ['post' => $post, 'user' => $user]);
     }
 
     public function edit($id)
@@ -70,16 +73,10 @@ class PostsController extends Controller
         return "vc n pode atualizar esse post, ele n é seu";
     }
 
-    public function delete($id)
+    public function destroy(Request $request)
     {
-        $post = Posts::findOrFail($id);
-        return view('posts.delete', ['post' => $post]);
-    }
-
-    public function destroy($id)
-    {
+        $id = $request->query('id');
         $post = Posts::findOrFail($id);
         $post->delete();
-        return "post excluido com sucesso!";
     }
 }
