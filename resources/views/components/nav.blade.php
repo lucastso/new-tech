@@ -1,18 +1,15 @@
 <div x-data="nav()">
     @if($log == false)
-        <section class="h-20 flex xs:flex-col-reverse lg:flex-row justify-between items-center border-b border-gray-100">
-            <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
+        <section class="xs:h-auto lg:h-20 flex justify-between items-center border-b border-gray-100">
+            <div class="flex justify-center items-center gap-12 xs:ml-4 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
                 </a>  
-                @if($user->level == 0)
                 <form class="relative">
-                    <input type="text" class="bg-white border border-gray-400 rounded-md w-96 h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
+                    <input type="text" class="bg-white border border-gray-400 rounded-md xs:w-10 xs:h-4 lg:w-96 lg:h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
                     <img src="/lupa.png" alt="search" class="absolute top-3 right-3">
                 </form>
-                @else
                 <p id="texto"></p>
-                @endif
             </div>
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
                 <a href="/register">Registrar-se</a>
@@ -20,26 +17,23 @@
             </div>
         </section>
     @else
-        <section class="h-20 flex xs:flex-col-reverse lg:flex-row justify-between items-center border-b border-gray-100">
+        <section class="xs:h-auto lg:h-20 flex xs:flex-col lg:flex-row justify-between items-center border-b border-gray-100">
             <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
                 </a>
-                @if($user->level == 0) 
                 <form class="relative">
-                    <input type="text" class="bg-white border border-gray-400 rounded-md w-96 h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
+                    <input type="text" class="bg-white border border-gray-400 rounded-md xs:w-10 xs:h-4 lg:w-96 lg:h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
                     <img src="/lupa.png" alt="search" class="absolute top-3 right-3">
                 </form>
-                @else
                 <p id="texto"></p>
-                @endif
             </div>
             @if($user->level == 0)
-            <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
-                <a href="/posts/myposts">Meus posts</a>
-                <a href="/posts/novo" class="py-2 px-4 border-2 border-black-24 rounded">Novo post +</a>
+            <div class="xs:mt-4 lg:mt-0 flex justify-center items-center xs:gap-4 lg:gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24 xs:flex-col lg:flex-row">
+                <a href="/posts/myposts" class="xs:text-xs lg:text-base">Meus posts</a>
+                <a href="/posts/novo" class="xs:py-1 lg:py-2 xs:px-2 lg:px-4 border-2 border-black-24 rounded xs:text-xs lg:text-base">Novo post +</a>
                 <a x-on:click="showLogOut = !showLogOut " class="flex gap-4 items-center text-black-24 relative">
-                    <p>{{$user->name}}</p>
+                    <p class="xs:text-xs lg:text-base">{{$user->name}}</p>
                     @if($user->profile_photo_path != null)
                         <img src="{{$user->profile_photo_path}}" alt="" class="rounded-full h-10 w-10 object-cover">
                     @else
@@ -57,8 +51,8 @@
                 </a>
             </div>
             @elseif($user->level == 1)
-            <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
-                <a href="/avaliador/avaliar" class="py-2 px-4 border-2 border-black-24 rounded">Avaliar posts</a>
+            <div class="xs:mt-4 lg:mt-0 flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
+                <a href="/avaliador/avaliar" class="xs:py-1 lg:py-2 xs:py-2 lg:px-4 border-2 border-black-24 rounded xs:text-xs lg:text-base">Avaliar posts</a>
             </div>
             @else
             <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">

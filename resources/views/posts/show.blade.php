@@ -15,8 +15,8 @@
 
     <section>
         <div class="flex justify-between w-full items-center">
-            <div class="flex gap-1 items-center">
-                <h1 x-text="data[0].titulo" class="font-bold text-lg"></h1>
+            <div class="flex gap-1 items-center xs:flex-col lg:flex-row">
+                <h1 x-text="data[0].titulo" class="font-bold xs:text-sm lg:text-lg"></h1>
                 <span class="text-sm text-gray-600">-</span>
                 <p x-text="getDate(data[0].created_at)" class="text-sm text-gray-600"></p>
                 @if($user->level == 1)
