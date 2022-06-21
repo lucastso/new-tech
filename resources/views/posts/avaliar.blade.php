@@ -1,7 +1,7 @@
 @extends('layouts.interna')
 @section('content')
 <section x-data="avaliar()">
-    <div class="lg:grid lg:grid-cols-3 xs:grid-cols-1 xs:gap-6 lg:gap-12 mt-10" x-show="data.length != 0">
+    <div class="grid lg:grid-cols-3 xs:grid-cols-1 xs:gap-6 lg:gap-12 mt-10" x-show="data.length != 0">
         <template x-for="item in data">
             <a class="flex items-start justify-between col-span-1 xs:h-32 lg:h-40 xs:gap-2 lg:gap-3 cursor-pointer" x-bind:href="'/posts/' + item.id" id="item.id">
                 <img x-bind:src="item.imagem" alt="Post image" class="xs:w-32 lg:w-56 xs:h-full lg:h-40 object-cover rounded-lg">    

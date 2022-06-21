@@ -1,12 +1,12 @@
 <div x-data="nav()">
     @if($log == false)
-        <section class="xs:h-auto lg:h-20 flex justify-between items-center border-b border-gray-100">
-            <div class="flex justify-center items-center gap-12 xs:ml-4 lg:ml-32">
+        <section class="xs:h-auto lg:h-20 flex justify-between items-center border-b border-gray-100 pb-4 lg:pb-0">
+            <div class="xs:mt-4 lg:mt-0 flex justify-center items-center xs:gap-4 lg:gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
-                </a>  
+                </a> 
                 <form class="relative">
-                    <input type="text" class="bg-white border border-gray-400 rounded-md xs:w-10 xs:h-4 lg:w-96 lg:h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
+                    <input type="text" class="bg-white border border-gray-400 rounded-md xs:w-full lg:w-96 h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
                     <img src="/lupa.png" alt="search" class="absolute top-3 right-3">
                 </form>
                 <p id="texto"></p>
@@ -17,13 +17,13 @@
             </div>
         </section>
     @else
-        <section class="xs:h-auto lg:h-20 flex xs:flex-col lg:flex-row justify-between items-center border-b border-gray-100">
-            <div class="flex justify-center items-center gap-12 xs:ml-6 lg:ml-32">
+        <section class="xs:h-auto lg:h-20 flex xs:flex-col lg:flex-row justify-between items-center border-b border-gray-100 pb-4 lg:pb-0">
+            <div class="xs:mt-4 lg:mt-0 flex justify-center items-center xs:gap-4 lg:gap-12 xs:ml-6 lg:ml-32">
                 <a href="/">
                     <img src="/logo.svg" alt="logo">
                 </a>
                 <form class="relative">
-                    <input type="text" class="bg-white border border-gray-400 rounded-md xs:w-10 xs:h-4 lg:w-96 lg:h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
+                    <input type="text" class="bg-white border border-gray-400 rounded-md xs:w-full lg:w-96 h-10 focus:ring-0 outline-none outline-0 pl-2 pr-10" id="texto">
                     <img src="/lupa.png" alt="search" class="absolute top-3 right-3">
                 </form>
                 <p id="texto"></p>
@@ -52,12 +52,10 @@
             </div>
             @elseif($user->level == 1)
             <div class="xs:mt-4 lg:mt-0 flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
-                <a href="/avaliador/avaliar" class="xs:py-1 lg:py-2 xs:py-2 lg:px-4 border-2 border-black-24 rounded xs:text-xs lg:text-base">Avaliar posts</a>
+                <a href="/avaliador/avaliar" class="xs:py-1 lg:py-2 xs:px-2 lg:px-4 border-2 border-black-24 rounded xs:text-xs lg:text-base">Avaliar posts</a>
             </div>
             @else
-            <div class="flex justify-center items-center gap-12 xs:mr-6 lg:mr-32 font-bold text-black-24">
-                <a href="/">Usuários</a>
-            </div>
+            <p></p>
             @endif
         </section>
     @endif

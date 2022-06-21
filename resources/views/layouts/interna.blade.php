@@ -16,7 +16,7 @@
     </head>
     <body>
         <x-nav></x-nav>
-        <section class="lg:mx-32 xs:mx-6 mt-10">
+        <section class="lg:mx-32 xs:mx-6 xs:mt-4 lg:mt-10">
             @yield('content')
         </section>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
