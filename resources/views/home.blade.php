@@ -10,7 +10,7 @@
     <div class="grid lg:grid-cols-3 xs:grid-cols-1 xs:gap-6 lg:gap-12 mt-10" x-show="data.length != 0">
         <template x-for="item in data">
             <a class="flex items-start justify-between col-span-1 h-40 gap-3 cursor-pointer" x-bind:href="'/posts/' + item.id" id="item.id">
-                <img x-bind:src="item.imagem" alt="Post image" class="xs:w-32 lg:w-56 xs:h-full lg:h-40 object-cover rounded-lg">    
+                <img x-bind:src="item.imagem" alt="Post image" class="xs:w-32 lg:w-56 xs:h-full lg:h-40 object-cover rounded-lg">
                 <div class="flex flex-col xs:gap-2 lg:gap-4 mt-1">
                     <h1 x-text="sliceTexto(item.titulo)" class="font-bold xs:text-xs lg:text-base"></h1>
                     <p x-text="sliceTexto(item.conteudo)" class="xs:text-xs lg:text-sm text-gray-600"></p>
@@ -52,7 +52,8 @@
                 },
 
                 sliceTexto(item) {
-                    return item.slice(0, 60) + '...';
+                    if(item.length > 60) return item.slice(0, 60) + '...';
+                    else return item;
                 },
 
                 getText() {

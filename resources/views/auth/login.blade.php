@@ -33,14 +33,9 @@
             </div>
 
             <div class="flex items-center justify-start mt-10">
-                <button class="py-2 px-4 border-2 rounded mr-6 border-black-24 text-black-24">
+                <button class="py-2 px-4 border-2 rounded mr-6 border-black-24 text-black-24 font-bold">
                     {{ __('Logar') }}
                 </button>
-                @if (Route::has('password.request'))
-                    <a class="underline text-xs text-gray-600" href="{{ route('password.request') }}">
-                        {{ __('Esqueci minha senha') }}
-                    </a>
-                @endif
             </div>
         </form>
     </x-jet-authentication-card>

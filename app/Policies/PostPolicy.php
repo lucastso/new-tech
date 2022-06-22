@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Posts;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class Posts
+class PostPolicy
 {
     use HandlesAuthorization;
 

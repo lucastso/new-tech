@@ -40,7 +40,8 @@
                 },
 
                 sliceTexto(item) {
-                    return item.slice(0, 60) + '...';
+                    if(item.length > 60) return item.slice(0, 60) + '...';
+                    else return item;
                 }
             }))
         })

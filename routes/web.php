@@ -30,7 +30,9 @@ Route::middleware([
     Route::post('/posts/novo', [\App\Http\Controllers\PostsController::class, 'store'])->name("registrar.post");
     Route::get('/posts/{id}', [\App\Http\Controllers\PostsController::class, 'show']);
     Route::get('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'edit']);
-    Route::post('/posts/{id}/edit', [\App\Http\Controllers\PostsController::class, 'update'])->name("update.post");
+    Route::post('/posts/{id}/update', [\App\Http\Controllers\PostsController::class, 'update'])->name("update.post");
+    Route::get('/perfil/{id}/edit', [\App\Http\Controllers\PostsController::class, 'perfil']);
+    Route::post('/perfil/{id}/update', [\App\Http\Controllers\PostsController::class, 'updatePerfil'])->name("update.perfil");
     Route::get('/posts/{id}/delete', [\App\Http\Controllers\PostsController::class, 'delete']);
     Route::post('/posts/destroy', [\App\Http\Controllers\PostsController::class, 'destroy'])->name("destroy.post");
 });

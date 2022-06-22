@@ -47,7 +47,7 @@
             @endif
 
             <div class="flex items-center justify-start mt-10">
-                <button class="py-2 px-4 border-2 rounded mr-6 border-black-24 text-black-24">
+                <button class="py-2 px-4 border-2 rounded mr-6 border-black-24 text-black-24 font-bold">
                     {{ __('Registrar') }}
                 </button>
                 <a class="underline text-xs text-gray-600" href="{{ route('login') }}">
