@@ -2,8 +2,8 @@
 @section('content')
 <section x-data="main()">
     <div class="flex justify-between items-center w-full font-bold text-black-24 flex-wrap text-center">
-        <template x-for="items in categorias">
-            <p x-text="items" class="cursor-pointer xs:text-xs lg:text-base"></p>
+        <template x-for="items in tags">
+            <p x-text="items.categoria" class="cursor-pointer xs:text-xs lg:text-base"></p>
         </template>
     </div>
 
@@ -33,6 +33,7 @@
             Alpine.data('main', () => ({
                 data: [],
                 api: axios.create(),
+                tags: [],
                 categorias: [
                     'Tech',
                     'Elon',
@@ -43,11 +44,19 @@
                 init() {
                     this.get();
                     this.getText();
+                    this.getTag();
                 },
 
                 get() {
                     this.api.get('{{route('api.posts', false)}}').then((response) => {
                         this.data = response.data;
+                    });
+                },
+                
+                getTag() {
+                    this.api.get('{{route('gettag', false)}}').then((response) => {
+                        this.tags = response.data;
+                        console.log(response.data);
                     });
                 },
 

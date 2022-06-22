@@ -67,4 +67,15 @@ class ApiPostsController extends Controller
             'estado' => 2
         ]);
     }
+
+    public function getTag()
+    {
+        $data = Posts::query()
+            ->select('categoria')
+            ->where('estado', '!=', 1)
+            ->limit(8)
+            ->get()->toArray();
+
+        return response()->json($data);
+    }
 }
