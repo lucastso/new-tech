@@ -82,9 +82,6 @@
         </section>
     @endif
 </div>
-
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('nav', () => ({

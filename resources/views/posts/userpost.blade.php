@@ -1,6 +1,6 @@
 @extends('layouts.interna')
 @section('content')
-<section x-data="userpost()">
+<section x-data="userpost">
     <div class="grid lg:grid-cols-3 xs:grid-cols-1 xs:gap-6 lg:gap-12 mt-10" x-show="data.length != 0">
         <template x-for="post in data">
             <a class="flex items-start justify-between col-span-1 xs:h-32 lg:h-40 xs:gap-2 lg:gap-3 cursor-pointer" x-bind:href="'/posts/' + post.id" id="post.id">
